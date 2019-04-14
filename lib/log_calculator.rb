@@ -8,7 +8,10 @@ class LogCalculator
   end
 
   def page_visits
-    
+    log_lines.
+      group_by(&:path).
+      each_with_object({}) { |item, result| result[item.first] = item.last.size }.
+      sort_by {|_, v| -v }.map { |item| "#{item[0]} #{item[1]} visits" }
   end
 
   def page_views

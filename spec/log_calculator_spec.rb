@@ -4,6 +4,14 @@ RSpec.describe LogCalculator do
 
   let(:file_path) { File.dirname(__FILE__) + '/fixtures/log_file.txt' }
 
+  let(:page_visits) do
+    [
+      '/contact 2 visits',
+      '/help_page/1 1 visits',
+      '/home 1 visits'
+    ]
+  end
+
   subject { described_class.new(file_path) }
 
   it 'load file' do
@@ -11,6 +19,7 @@ RSpec.describe LogCalculator do
   end
 
   it '#page_visits' do
+    expect(subject.page_visits).to eq(page_visits)
   end
 
   it '#page_views' do
