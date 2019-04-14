@@ -12,6 +12,14 @@ RSpec.describe LogCalculator do
     ]
   end
 
+  let(:page_views) do
+    [
+      '/contact 2 unique views',
+      '/help_page/1 1 unique views',
+      '/home 1 unique views'
+    ]
+  end
+
   subject { described_class.new(file_path) }
 
   it 'load file' do
@@ -23,5 +31,6 @@ RSpec.describe LogCalculator do
   end
 
   it '#page_views' do
+    expect(subject.page_views).to eq(page_views)
   end
 end
